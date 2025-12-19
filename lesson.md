@@ -17,21 +17,29 @@
 * **Demo & Hands-on Workshop (30 min):**  
   1. **Connecting to the Database:**  
      * Open **DbGate**.  
-     * Create a new connection to the DuckDB file provided: db/unit-1-3.db.  
+     * Create a new connection to the DuckDB file provided: db/unit-1-3.db.
+```
+   db/unit-1-3.db
+```
   2. **Creating a Schema:**  
+
+```sql
      CREATE SCHEMA IF NOT EXISTS lesson;
+```
 
   3. **Creating your first Table:**  
+```sql
      CREATE TABLE lesson.users (  
        id INTEGER,  
        name VARCHAR,  
        email VARCHAR  
      );
-
+```
   4. **Basic Data Entry (DML basics for testing DDL):**  
+```sql
      INSERT INTO lesson.users (id, name, email)  
      VALUES (1, 'John Doe', 'john.doe@gmail.com');
-
+```
 * **Q\&A (10 min):** Addressing connection issues and terminology (Database vs. Schema).  
 * **Reflection (10 min):** Why is organizing data into schemas important in a production environment?
 
@@ -44,6 +52,7 @@
   * Understanding the School System ERD (Students, Teachers, Classes).  
 * **Demo & Hands-on Workshop (30 min):**  
   1. **Creating Tables with Constraints:**  
+```sql
      CREATE TABLE lesson.teachers (  
        id INTEGER PRIMARY KEY,  
        name VARCHAR NOT NULL,  
@@ -58,6 +67,7 @@
        name VARCHAR NOT NULL,  
        teacher\_id INTEGER REFERENCES lesson.teachers(id)  
      );
+```
 
   2. **Exercise:** Complete the CREATE TABLE statement for the students table based on the ERD provided in the self-study section.  
 * **Q\&A (10 min):** Troubleshooting foreign key errors and understanding "CHECK" logic.  
@@ -73,17 +83,23 @@
   * The COPY command for CSV/JSON handling.  
 * **Demo & Hands-on Workshop (30 min):**  
   1. **Creating Indexes & Views:**  
+```sql
      CREATE INDEX students\_name\_idx ON lesson.students(name);
 
      CREATE VIEW lesson.students\_view AS  
      SELECT id, name, email FROM lesson.students;
+```
 
   2. **Modifying Structure (Alter/Drop):**  
+```sql
      ALTER TABLE lesson.classes ADD COLUMN start\_date DATE;  
      DROP TABLE IF EXISTS lesson.users;
+```
 
   3. **Importing Data:**  
+```sql
      COPY lesson.students FROM 'data/students.csv' (AUTO\_DETECT TRUE);
+```
 
 * **Q\&A (10 min):** When should you *not* use an index? Difference between dropping a table vs. deleting data.  
 * **Reflection (10 min):** How does using a View simplify the work for a Data Analyst who only needs specific columns?
@@ -91,7 +107,7 @@
 ## **Self-Study & Advanced Parts (Optional)**
 
 ### **Advanced ERD Reference**
-
+```dbml
 Table students {  
   id int \[pk\]  
   name varchar  
@@ -118,28 +134,43 @@ Table classes {
 
 Ref: students.class\_id \> classes.id  
 Ref: classes.teacher\_id \> teachers.id
+```
 
 ### **Advanced Data Exports**
 
 Exporting data to JSON or specific CSV delimiters for specialized tools:
-
+```sql
 \-- Export to JSON  
 COPY (SELECT \* FROM lesson.students) TO 'students.json';
+```
 
+```sql
 \-- Export with specific delimiter  
 COPY (SELECT \* FROM lesson.students) TO 'students\_new.csv' WITH (HEADER 1, DELIMITER '|');
+```
 
 ### **Local Environment Setup**
 
 If you want to create the database file from scratch:
 
-1. Create conda environment: conda env create \-f environment.yml  
-2. Activate: conda activate ddb  
-3. Run script: python db/create\_duckdb.py
+1. Create a new conda environment from `environment.yml`
+```
+  conda env create -f environment.yml
+```
+2. Activate the conda environment
+```
+  conda activate ddb
+```   
+3. Run [create_duckdb.py](./db/create_duckdb.py) to create the database file.
+```
+  python db/create_duckdb.py
+```
 
 
 
 
+
+---
 Below are the original version
 ---
 

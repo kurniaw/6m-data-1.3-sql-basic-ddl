@@ -4,7 +4,7 @@
 
 Refer to the following markdown file for the respective sections of the class:
 
-- [Self Studies](./studies.md)
+- [Pre-Study](./pre-study.md)
 - [Lesson](./lesson.md)
 - [Assignment](./assignment.md)
 - [Quiz](./quiz.md)

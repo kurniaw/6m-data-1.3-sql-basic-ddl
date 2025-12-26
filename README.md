@@ -4,7 +4,7 @@
 
 Refer to the following markdown file for the respective sections of the class:
 
-- [Pre-Study](./pre-study.md)
+- [Pre-Class](./pre-class.md)
 - [Lesson](./lesson.md)
 - [Assignment](./assignment.md)
 - [Reference](./reference.md)

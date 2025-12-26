@@ -10,7 +10,7 @@
 
 
 ---
-## **Section 1: Fundamentals of Database Structure & Connections (1 Hour)**
+## **Section 1: Fundamentals of Database Structure & Connections**
 
 **Learning Objective:** By the end of this section, learners will be able to connect to a DuckDB database using DbGate and perform basic schema and table creation, alter table and drop (delete) table.
 
@@ -52,7 +52,7 @@
 
 
 ---
-* **Demo & Hands-on Workshop (30 min):**
+* **Demo & Hands-on Workshop:**
    
 1. **Connecting to the Database:**
   
@@ -83,7 +83,7 @@
 CREATE SCHEMA lesson;
 ```
 
-   alternatively, we can also use the following to create a schema if it does not exist yet
+  * alternatively, we can also use the following to create a schema if it does not exist yet
 
 ```sql
 CREATE SCHEMA IF NOT EXISTS lesson;
@@ -92,7 +92,7 @@ CREATE SCHEMA IF NOT EXISTS lesson;
 
 3. **Creating your first Table:**
 
-   We will be creating a table `users` in the `lesson` schema. The table will have the following columns:
+  * We will be creating a table `users` in the `lesson` schema. The table will have the following columns:
 
 - `id` - integer
 - `name` - varchar
@@ -111,14 +111,14 @@ CREATE TABLE lesson.users (
 
 4. **Basic Data Entry (DML basics for testing DDL):**
 
-   We can insert data into the table using the `INSERT INTO` statement.
+  * We can insert data into the table using the `INSERT INTO` statement.
    
 ```sql
 INSERT INTO lesson.users (id, name, email)  
 VALUES (1, 'John Doe', 'john.doe@gmail.com');
 ```
 
-   This will insert a new row / record into the `users` table. You can insert multiple rows at once.
+  * This will insert a new row / record into the `users` table. You can insert multiple rows at once.
 
 ```sql
 INSERT INTO lesson.users (id, name, email)
@@ -130,9 +130,9 @@ VALUES (2, 'Jane Doe', 'jane.doe@gmail.com'),
 
 5. **Alter Tables**
 
-We can alter the tables to add, rename or remove columns.
+  * We can alter the tables to add, rename or remove columns.
 
-Add column 'start_date' to table users.
+  * Add column 'start_date' to table users.
 
 ```sql
 ALTER TABLE lesson.users ADD COLUMN start_date DATE;
@@ -162,19 +162,17 @@ DROP TABLE lesson.users;
 ```
 > **Tip: "Always run a SELECT before a DROP. Double-check your table name. It’s better to be slow and correct than fast and sorry."**
 
-* **Q\&A (10 min):** Addressing connection issues and terminology (Database vs. Schema).  
-* **Reflection (10 min):** Why is organizing data into schemas important in a production environment?
-
+* **Q\&A:** Addressing connection issues and terminology (Database vs. Schema).  
+* **Reflection:** Why is organizing data into schemas important in a production environment?
 
 ---
-## **Section 2: Building Relationships & Constraints (1 Hour)**
+## **Section 2: Building Relationships & Constraints**
 
 **Learning Objective:** By the end of this section, learners will be able to translate an Entity Relationship Diagram (ERD) into SQL tables using primary keys, foreign keys, and data constraints.
 
-* **Theory Summary/Recap (10 min):**  
+* **Theory Summary/Recap:**  
   * Constraints: Primary Keys (Uniqueness), Foreign Keys (Relationships), NOT NULL, CHECK, and DEFAULT.  
   * Understanding the School System ERD (Students, Teachers, Classes).
-
 
 <details>
   <summary>Primary Keys, Foreign Keys, NOT NULL, CHECK, and DEFAULT</summary>
@@ -187,12 +185,7 @@ DROP TABLE lesson.users;
   * `check` constraint allows you to specify an arbitrary boolean expression. Any columns that do not satisfy this expression violate the constraint.
 </details>
 
-
-
-* **Demo & Hands-on Workshop (30 min):**
-
-
-
+* **Demo & Hands-on Workshop:**
  
 1. **Creating Tables with Constraints:**  
 ```sql
@@ -251,11 +244,11 @@ Ref: classes.teacher_id > teachers.id // many-to-one
 
 
 ---
-## **Section 3: Data Management & Performance (1 Hour)**
+## **Section 3: Data Management & Performance**
 
 **Learning Objective:** By the end of this section, learners will be able to import, update and export data, improve query performance with indexes, explain differences between tables and views. 
 
-* **Theory Summary/Recap (10 min):**
+* **Theory Summary/Recap:**
   * The COPY command for CSV/JSON handling.
   * What are Indexes? (Think of a book index for speed).  
   * Tables vs. Views (Physical storage vs. Virtual queries).  
@@ -264,22 +257,22 @@ Ref: classes.teacher_id > teachers.id // many-to-one
 <details>
   <summary>What are Indexes?</summary>
   
-  Indexes are used to improve the performance of queries. They are not required but are recommended for tables with many rows. They are used to _retrieve data from the database more quickly than otherwise_. Indexes are created using one or more columns of a database table. The users cannot see the indexes, they are just used to speed up searches/queries.
+  * Indexes are used to improve the performance of queries. They are not required but are recommended for tables with many rows. They are used to _retrieve data from the database more quickly than otherwise_. Indexes are created using one or more columns of a database table. The users cannot see the indexes, they are just used to speed up searches/queries.
 </details>
 
 <details>
   <summary>Tables vs. Views</summary>
   
-  Tables and views are both ways to store data. What is the difference between them? A table is a physical copy of the data (materialized), while a view is a virtual copy of the data. A view is a query that is run on the fly when you access the view. A view is not stored in the database, but the query that defines the view is stored in the database.
+  * Tables and views are both ways to store data. What is the difference between them? A table is a physical copy of the data (materialized), while a view is a virtual copy of the data. A view is a query that is run on the fly when you access the view. A view is not stored in the database, but the query that defines the view is stored in the database.
 </details>
 
 
 
-* **Demo & Hands-on Workshop (30 min):**
+* **Demo & Hands-on Workshop:**
 
 1. **Importing Data:**
 
-We can import data from a CSV file into a table.
+  * We can import data from a CSV file into a table.
 
 ```sql
 COPY lesson.teachers FROM '/Users/fengfeng/Dev/6m-data-1.3-sql-basic-ddl/data/teachers.csv' (AUTO_DETECT TRUE);
@@ -289,14 +282,14 @@ COPY lesson.teachers FROM '/Users/fengfeng/Dev/6m-data-1.3-sql-basic-ddl/data/te
 
 2. **Exercise:**
 
-  Import data for `classes` and `students` tables. 
+  * Import data for `classes` and `students` tables. 
 
 
-4. **Updating Data:**
+3. **Updating Data:**
 
-   We can update the data in the table using the `UPDATE` statement.
+  * We can update the data in the table using the `UPDATE` statement.
 
-   Let's say `Linda Garcia` changed her email to `linda.g@example.com`, we can update the `email` of the student with id 4 (her id) to `linda.g@example.com`. The `WHERE` clause is used to specify which rows to update.
+  * Let's say `Linda Garcia` changed her email to `linda.g@example.com`, we can update the `email` of the student with id 4 (her id) to `linda.g@example.com`. The `WHERE` clause is used to specify which rows to update.
 
 ```sql
 UPDATE lesson.students
@@ -307,13 +300,13 @@ WHERE id = 4;
 
 4. **Exporting Data:**
 
-  Let's export the data from the student table into a CSV file delimited with `|`.       Remember to prepend the full directory path to the CSV file.
+  * Let's export the data from the student table into a CSV file delimited with `|`.       Remember to prepend the full directory path to the CSV file.
 
 ```sql
 COPY (SELECT * FROM lesson.students) TO '/Users/fengfeng/Dev/6m-data-1.3-sql-basic-ddl/data/students_new.csv' WITH (HEADER 1, DELIMITER '|');
 ```
 
-  We can also export the data into a JSON file (you will learn more about JSON in Module 2).
+  * We can also export the data into a JSON file (you will learn more about JSON in Module 2).
 
 ```sql
 COPY (SELECT * FROM lesson.students) TO '/Users/fengfeng/Dev/6m-data-1.3-sql-basic-ddl/data/students.json';
@@ -321,13 +314,20 @@ COPY (SELECT * FROM lesson.students) TO '/Users/fengfeng/Dev/6m-data-1.3-sql-bas
 
 5. **Exercise:**
 
-  Repeat the above steps for the `teachers` & `classes` tables.
+  * Repeat the above steps for the `teachers` & `classes` tables.
 
 
 
 6. **Creating Indexes:**
 
-  Indexes are used to improve the performance of queries. They are not required but are recommended for tables with many rows. They are used to _retrieve data from the database more quickly than otherwise_. Indexes are created using one or more columns of a database table. The users cannot see the indexes, they are just used to speed up searches/queries.
+   <details>
+   <summary>Indexes</summary>
+  
+   * Indexes are used to improve the performance of queries. They are not required but are recommended for tables with many rows. They are used to _retrieve data from the database more quickly than otherwise_. Indexes are created using one or more columns of a database table. The users cannot see the indexes, they are just used to speed up searches/queries.
+   </details>
+
+
+  
 
 ```sql
 -- Create a unique index 'teachers_name_idx' on the column name of table teachers.
@@ -351,9 +351,13 @@ WHERE table_name = 'students';
 
 7. **Tables vs Views:**
 
-  Tables and views are both ways to store data. What is the difference between them? A table is a physical copy of the data (materialized), while a view is a virtual copy of the data. A view is a query that is run on the fly when you access the view. A view is not stored in the database, but the query that defines the view is stored in the database.
+   <details>
+   <summary>Tables and Views</summary>
+  
+   * Tables and views are both ways to store data. What is the difference between them? A table is a physical copy of the data (materialized), while a view is a virtual copy of the data. A view is a query that is run on the fly when you access the view. A view is not stored in the database, but the query that defines the view is stored in the database.
+   </details>
 
-  We will be creating a view `students_view` in the `lesson` schema. The view will have the following columns:
+  * We will be creating a view `students_view` in the `lesson` schema. The view will have the following columns:
 
   - `id` - integer
   - `name` - varchar
@@ -367,21 +371,17 @@ FROM lesson.students;
 
 8. **Exercise:**
 
-  Create a view `teachers_view` with the same columns as `students_view` but for the `teachers` table.
+  * Create a view `teachers_view` with the same columns as `students_view` but for the `teachers` table.
    
 
 
-* **Q\&A (10 min):** When should you *not* use an index? Difference between dropping a table vs. deleting data.  
-* **Reflection (10 min):** How does using a View simplify the work for a Data Analyst who only needs specific columns?
+* **Q\&A:** When should you *not* use an index? Difference between dropping a table vs. deleting data.  
+* **Reflection:** How does using a View simplify the work for a Data Analyst who only needs specific columns?
 
 
 
 
 ---
-### **Advanced Data Exports**
-
-
-
 
 ## **Self-Study & Advanced Parts (Optional)**
 ### **Local Environment Setup**

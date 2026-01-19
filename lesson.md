@@ -3,7 +3,7 @@
 
 * **Module:** 1.3 Data Definition & Management 
 * **Target Audience:** Adult Learners (Basic Python knowledge) 
-* **Methodology:** Flipped Classroom / Code-Along / "I do, We do, You do"
+* **Methodology:** Flipped Classroom / Code-along / "I do, We do, You do"
 * **Tools:** [DbGate](https://dbgate.org/), [DuckDB](https://duckdb.org/)
 
 ## **🎯 Learning Objectives (Bloom's Taxonomy)**
@@ -58,7 +58,7 @@ We will be using two modern, lightweight tools:
 
 
 ---
-#### **🟢 Activity 1: The "Profile" Table (Code-Together) (20 Mins)**
+#### **🟢 Activity 1: The "Profile" Table (Code-along) (20 Mins)**
    
 1. **Connecting to the Database:**
   
@@ -204,7 +204,7 @@ DROP TABLE lesson.users;
 
 **Scenario:** The Instructor builds the `teachers` and `classes` tables. The students must independently build the `students` table based on the ERD.
 
-**Part A: Instructor Demo (Code Together)**
+**Part A: Instructor Demo (Code-along)**
  
 **Creating Tables with Constraints:**  
 ```sql
@@ -294,7 +294,7 @@ Ref: classes.teacher_id > teachers.id // many-to-one
 
 
 
-#### **🟢 Activity 3: The CSV Dump (Real-World Task, Code Together)**
+#### **🟢 Activity 3: The CSV Dump (Real-World Task, Code-along)**
 
 1. **Importing Data:**
 
@@ -346,7 +346,7 @@ COPY (SELECT * FROM lesson.students) TO '<full directory path>';
 
   * Repeat the above steps for the `teachers` & `classes` tables.
 
-#### **🟢 Activity 4: Index, Table & View (Code Together)**
+#### **🟢 Activity 4: Index, Table & View (Code-along)**
 
 6. **Creating Indexes:**
 

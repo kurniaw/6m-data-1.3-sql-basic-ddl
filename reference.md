@@ -15,6 +15,3 @@
 - https://hightouch.com/blog/duckdb
 - https://duckdb.org/why_duckdb
 
-### Set up DbGate for DuckDB
-
-- https://www.dbgate.io/databases/duckdb/

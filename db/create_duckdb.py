@@ -9,12 +9,10 @@ r3 = con.sql("select * from lesson.students")
 
 #r1.to_df().join(r2.to_df(), on="class_id").show()
 r1.show()
-r1.df().to_json()
+print(r1.df().to_json(orient="records"))
+
 r2.show()
 r3.show()
-
-
-
 
 # Panda DataFrame to DuckDB
 pandas_df = pd.DataFrame(
